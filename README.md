@@ -2,13 +2,18 @@
 **A service designed to provide convenient tools and resources for cheating and entertainment at school**
 
 ### Features:  
-- **Advanced Calculator**: Calculator for math.
+- **Advanced Calculator**:  A calculator for solving math problems.
 - **Customizable Settings**: Fire cloaking to educational sites so you dont get caught.
-- **Easy Accessibility**: Enjoy quick access through a streamlined data URL, ensuring fast loading and ease of use.
+- **Easy Accessibility**: quick access through a streamlined data URL, ensuring fast loading and ease of use.
 
 ### To Do:  
-- **Chatroom Integration**: idk if you animals will be able to behave yourselfs (myself included) so I might not add this.
-- **AI Assistance**: For writing articles for english, providing answers for any academic problem, and for fucking roleplaying idk.
+- **Chatroom Integration**: Not sure if you animals will behave (myself included), so I might not add this.
+- **AI Assistance**: For writing English articles, providing answers to academic problems, and for... well, roleplaying, I guess.
 
-### CONTRIBUTING
-**please help me 😭🙏**
+### CONTRIBUTING  
+**Please help me 😭🙏** Feel free to create a pull request. If you have any questions or want to be harassed, contact me via Discord.
+
+<div align="left">
+  <a href="https://discord.com/users/Sxgei" target="_blank">
+    <img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Discord">
+  </a>
