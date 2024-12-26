@@ -4,7 +4,7 @@
 ### Features:  
 - **Advanced Calculator**:  A calculator for solving math problems.
 - **Customizable Settings**: Fire cloaking to educational sites so you dont get caught.
-- **Easy Accessibility**: quick access through a streamlined data URL, ensuring fast loading and ease of use.
+- **Easy Accessibility**: Quick access through the index file or a data URL, ensuring fast loading and ease of use.
 
 ### To Do:  
 - **Chatroom Integration**: Not sure if you animals will behave (myself included), so I might not add this.
