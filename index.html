@@ -1,235 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #111;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #fff;
-        }
-
-        .calculator {
-            background-color: #222;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            width: 320px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .display {
-            background-color: #000;
-            color: #f39c12;
-            padding: 20px;
-            font-size: 3em;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            min-height: 70px;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            letter-spacing: 1px;
-        }
-
-        .button-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-        }
-
-        .button {
-            background-color: #444;
-            color: #fff;
-            border: none;
-            font-size: 1.6em;
-            width: 65px;
-            height: 65px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.1s ease;
-        }
-
-        .button:hover {
-            background-color: #f39c12;
-            transform: scale(1.1);
-        }
-
-        .button:active {
-            background-color: #e67e22;
-        }
-
-        .button.special {
-            background-color: #f39c12;
-        }
-
-        .button.special:hover {
-            background-color: #e67e22;
-        }
-
-        .button.clear {
-            background-color: #e74c3c;
-        }
-
-        .button.clear:hover {
-            background-color: #c0392b;
-        }
-
-        .button.equals {
-            background-color: #2ecc71;
-        }
-
-        .button.equals:hover {
-            background-color: #27ae60;
-        }
-
-        .settings-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: #444;
-            color: #fff;
-            font-size: 1.8em;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: background-color 0.3s ease;
-        }
-
-        .settings-btn:hover {
-            background-color: #f39c12;
-        }
-
-        .settings-btn:active {
-            background-color: #e67e22;
-        }
-
-        .settings-btn::before {
-            content: '\2699';
-        }
-
-        /* Settings Modal */
-        .settings-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.3s ease;
-        }
-
-        .settings-modal-content {
-            background-color: #333;
-            padding: 30px;
-            border-radius: 10px;
-            width: 380px;
-            text-align: center;
-            color: #fff;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-        }
-
-        .settings-modal-content select,
-        .settings-modal-content input,
-        .settings-modal-content button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #444;
-            color: #fff;
-            font-size: 1.1em;
-        }
-
-        .settings-modal-content button {
-            background-color: #f39c12;
-            cursor: pointer;
-        }
-
-        .settings-modal-content button:hover {
-            background-color: #e67e22;
-        }
-
-        .settings-modal-content button:active {
-            background-color: #e67e22;
-        }
-
-        h3, h4 {
-            color: #f39c12;
-            font-weight: 500;
-        }
-
-        label {
-            color: #fff;
-            font-weight: 500;
-        }
-
-        /* Close Button Red */
-        .settings-modal-content button:last-child {
-            background-color: #e74c3c; /* Red close button */
-        }
-
-        .settings-modal-content button:last-child:hover {
-            background-color: #c0392b;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/purrlyy/Calculator@latest/style.css" />
 </head>
 <body>
     <div class="calculator">
         <div class="display" id="display">0</div>
-        
+
         <div class="button-row">
             <button class="button clear" onclick="clearDisplay()">C</button>
             <button class="button special" onclick="appendToDisplay('%')">%</button>
             <button class="button special" onclick="appendToDisplay('/')">/</button>
             <button class="button special" onclick="appendToDisplay('*')">*</button>
         </div>
-        
+
         <div class="button-row">
             <button class="button" onclick="appendToDisplay('7')">7</button>
             <button class="button" onclick="appendToDisplay('8')">8</button>
             <button class="button" onclick="appendToDisplay('9')">9</button>
             <button class="button special" onclick="appendToDisplay('-')">-</button>
         </div>
-        
+
         <div class="button-row">
             <button class="button" onclick="appendToDisplay('4')">4</button>
             <button class="button" onclick="appendToDisplay('5')">5</button>
             <button class="button" onclick="appendToDisplay('6')">6</button>
             <button class="button special" onclick="appendToDisplay('+')">+</button>
         </div>
-        
+
         <div class="button-row">
             <button class="button" onclick="appendToDisplay('1')">1</button>
             <button class="button" onclick="appendToDisplay('2')">2</button>
             <button class="button" onclick="appendToDisplay('3')">3</button>
             <button class="button equals" onclick="calculateResult()">=</button>
         </div>
-        
+
         <div class="button-row">
             <button class="button" onclick="appendToDisplay('0')">0</button>
             <button class="button" onclick="appendToDisplay('.')">.</button>
@@ -253,91 +63,12 @@
             <button onclick="applyPreset()">Apply Preset</button>
             <h4>Custom Settings</h4>
             <label for="custom-site">Enter Custom Site URL:</label>
-            <input type="url" id="custom-site" placeholder="Enter site URL">
+            <input type="url" id="custom-site" placeholder="Enter site URL" />
             <button onclick="applyCustomSite()">Apply Custom Site</button>
             <button onclick="closeSettings()">Close</button>
         </div>
     </div>
 
-    <script>
-        function clearDisplay() {
-            document.getElementById("display").innerText = "0";
-        }
-
-        function appendToDisplay(value) {
-            let currentDisplay = document.getElementById("display").innerText;
-            if (currentDisplay === "0") {
-                document.getElementById("display").innerText = value;
-            } else {
-                document.getElementById("display").innerText += value;
-            }
-        }
-
-        function calculateResult() {
-            let currentDisplay = document.getElementById("display").innerText;
-            try {
-                let result = eval(currentDisplay);
-                document.getElementById("display").innerText = result;
-            } catch (e) {
-                document.getElementById("display").innerText = "Error";
-            }
-        }
-
-        function applyPreset() {
-            const site = document.getElementById("site-select").value;
-            let title, favicon;
-
-            switch (site) {
-                case "google":
-                    title = "Google";
-                    favicon = "https://www.google.com/favicon.ico";
-                    break;
-                case "ixl":
-                    title = "IXL Learning";
-                    favicon = "https://www.ixl.com/favicon.ico";
-                    break;
-                case "epic":
-                    title = "Epic!";
-                    favicon = "https://www.getepic.com/favicon.ico";
-                    break;
-                case "powerschool":
-                    title = "PowerSchool";
-                    favicon = "https://www.powerschool.com/favicon.ico";
-                    break;
-            }
-
-            document.title = title;
-            updateFavicon(favicon);
-        }
-
-        function applyCustomSite() {
-            const customSite = document.getElementById("custom-site").value;
-            if (customSite) {
-                document.title = customSite;
-                const favicon = `https://www.google.com/s2/favicons?domain=${customSite}`;
-                updateFavicon(favicon);
-            } else {
-                alert("Please enter a valid site URL.");
-            }
-        }
-
-        function updateFavicon(favicon) {
-            let link = document.querySelector("link[rel='icon']");
-            if (!link) {
-                link = document.createElement("link");
-                link.rel = "icon";
-                document.head.appendChild(link);
-            }
-            link.href = favicon;
-        }
-
-        function openSettings() {
-            document.getElementById("settingsModal").style.display = "flex";
-        }
-
-        function closeSettings() {
-            document.getElementById("settingsModal").style.display = "none";
-        }
-    </script>
+    <script src="https://cdn.jsdelivr.net/gh/purrlyy/Calculator/script.js"></script>
 </body>
 </html>
