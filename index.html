@@ -2,31 +2,72 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tic-Tac-Toe</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/purrlyy/tic-tac-toe/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/purrlyy/Calculator/styles.css">
 </head>
 <body>
-    <h1>Tic-Tac-Toe</h1>
-    <div id="main-menu">
-        <button id="ai-mode">Play Against AI</button>
-        <button id="two-player-mode">Two Player</button>
-    </div>
-    <div id="game" style="display:none;">
-        <div id="board">
-            <div class="cell" data-index="0"></div>
-            <div class="cell" data-index="1"></div>
-            <div class="cell" data-index="2"></div>
-            <div class="cell" data-index="3"></div>
-            <div class="cell" data-index="4"></div>
-            <div class="cell" data-index="5"></div>
-            <div class="cell" data-index="6"></div>
-            <div class="cell" data-index="7"></div>
-            <div class="cell" data-index="8"></div>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+
+        <div class="button-row">
+            <button class="button clear" onclick="clearDisplay()">C</button>
+            <button class="button special" onclick="appendToDisplay('%')">%</button>
+            <button class="button special" onclick="appendToDisplay('/')">/</button>
+            <button class="button special" onclick="appendToDisplay('*')">*</button>
         </div>
-        <p id="turn-indicator">Player X's turn</p>
-        <p id="winner-text"></p>
-        <button id="restart">Restart</button>
+
+        <div class="button-row">
+            <button class="button" onclick="appendToDisplay('7')">7</button>
+            <button class="button" onclick="appendToDisplay('8')">8</button>
+            <button class="button" onclick="appendToDisplay('9')">9</button>
+            <button class="button special" onclick="appendToDisplay('-')">-</button>
+        </div>
+
+        <div class="button-row">
+            <button class="button" onclick="appendToDisplay('4')">4</button>
+            <button class="button" onclick="appendToDisplay('5')">5</button>
+            <button class="button" onclick="appendToDisplay('6')">6</button>
+            <button class="button special" onclick="appendToDisplay('+')">+</button>
+        </div>
+
+        <div class="button-row">
+            <button class="button" onclick="appendToDisplay('1')">1</button>
+            <button class="button" onclick="appendToDisplay('2')">2</button>
+            <button class="button" onclick="appendToDisplay('3')">3</button>
+            <button class="button equals" onclick="calculateResult()">=</button>
+        </div>
+
+        <div class="button-row">
+            <button class="button" onclick="appendToDisplay('0')">0</button>
+            <button class="button" onclick="appendToDisplay('.')">.</button>
+        </div>
+
+        <!-- Settings Button -->
+        <button class="settings-btn" onclick="openSettings()"></button>
     </div>
-    <script src="https://cdn.jsdelivr.net/gh/purrlyy/tic-tac-toe/script.js"></script>
+
+    <!-- Settings Modal -->
+    <div class="settings-modal" id="settingsModal">
+        <div class="settings-modal-content">
+            <h3>Settings</h3>
+            <label for="site-select">Choose a Site Preset:</label>
+            <select id="site-select">
+                <option value="google">Google.com</option>
+                <option value="ixl">IXL.com</option>
+                <option value="epic">Epic.com</option>
+                <option value="powerschool">PowerSchool.com</option>
+            </select>
+            <button onclick="applyPreset()">Apply Preset</button>
+            <h4>Custom Settings</h4>
+            <label for="custom-site">Enter Custom Site URL:</label>
+            <input type="url" id="custom-site" placeholder="Enter site URL">
+            <button onclick="applyCustomSite()">Apply Custom Site</button>
+            <button onclick="closeSettings()">Close</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/gh/purrlyy/Calculator/script.js"></script>
 </body>
 </html>
