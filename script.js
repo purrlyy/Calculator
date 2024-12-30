@@ -1,78 +1,108 @@
- function clearDisplay() {
-            document.getElementById("display").innerText = "0";
-        }
+document.addEventListener('DOMContentLoaded', () => {
+    const mainMenu = document.getElementById('main-menu');
+    const gameSection = document.getElementById('game');
+    const aiModeButton = document.getElementById('ai-mode');
+    const twoPlayerModeButton = document.getElementById('two-player-mode');
+    const cells = document.querySelectorAll('.cell');
+    const turnIndicator = document.getElementById('turn-indicator');
+    const winnerText = document.getElementById('winner-text');
+    const restartButton = document.getElementById('restart');
+    
+    let currentPlayer = 'X';
+    let aiMode = false;
 
-        function appendToDisplay(value) {
-            let currentDisplay = document.getElementById("display").innerText;
-            if (currentDisplay === "0") {
-                document.getElementById("display").innerText = value;
-            } else {
-                document.getElementById("display").innerText += value;
+    const resetBoard = () => {
+        cells.forEach(cell => cell.innerText = '');
+        winnerText.innerText = '';
+        currentPlayer = 'X';
+        updateTurnIndicator();
+    };
+
+    const checkWinner = () => {
+        const winPatterns = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],
+            [0, 4, 8], [2, 4, 6]
+        ];
+
+        for (const pattern of winPatterns) {
+            const [a, b, c] = pattern;
+            if (
+                cells[a].innerText &&
+                cells[a].innerText === cells[b].innerText &&
+                cells[a].innerText === cells[c].innerText
+            ) {
+                return cells[a].innerText;
             }
         }
+        return null;
+    };
 
-        function calculateResult() {
-            let currentDisplay = document.getElementById("display").innerText;
-            try {
-                let result = eval(currentDisplay);
-                document.getElementById("display").innerText = result;
-            } catch (e) {
-                document.getElementById("display").innerText = "Error";
+    const updateTurnIndicator = () => {
+        if (currentPlayer === 'X') {
+            turnIndicator.innerText = "Player X's turn";
+            document.body.classList.add('player-x');
+            document.body.classList.remove('player-o');
+        } else {
+            turnIndicator.innerText = "Player O's turn";
+            document.body.classList.add('player-o');
+            document.body.classList.remove('player-x');
+        }
+    };
+
+    const aiMove = () => {
+        const emptyCells = Array.from(cells).filter(cell => !cell.innerText);
+        if (emptyCells.length === 0) return;
+        const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+        randomCell.innerText = 'O';
+        const winner = checkWinner();
+        if (winner) {
+            winnerText.innerText = `${winner} wins!`;
+            return;
+        }
+        currentPlayer = 'X';
+        updateTurnIndicator();
+    };
+
+    cells.forEach(cell => {
+        cell.addEventListener('click', () => {
+            if (!cell.innerText && !winnerText.innerText) {
+                cell.innerText = currentPlayer;
+                const winner = checkWinner();
+                if (winner) {
+                    winnerText.innerText = `${winner} wins!`;
+                } else {
+                    if (currentPlayer === 'X') {
+                        currentPlayer = 'O';
+                        if (aiMode) {
+                            aiMove();
+                        } else {
+                            updateTurnIndicator();
+                        }
+                    } else {
+                        currentPlayer = 'X';
+                        updateTurnIndicator();
+                    }
+                }
             }
-        }
+        });
+    });
 
-        function applyPreset() {
-            const site = document.getElementById("site-select").value;
-            let title, favicon;
+    aiModeButton.addEventListener('click', () => {
+        aiMode = true;
+        mainMenu.style.display = 'none';
+        gameSection.style.display = 'block';
+        resetBoard();
+    });
 
-            switch (site) {
-                case "google":
-                    title = "Google";
-                    favicon = "https://www.google.com/favicon.ico";
-                    break;
-                case "ixl":
-                    title = "IXL Learning";
-                    favicon = "https://www.ixl.com/favicon.ico";
-                    break;
-                case "epic":
-                    title = "Epic!";
-                    favicon = "https://www.getepic.com/favicon.ico";
-                    break;
-                case "powerschool":
-                    title = "PowerSchool";
-                    favicon = "https://www.powerschool.com/favicon.ico";
-                    break;
-            }
+    twoPlayerModeButton.addEventListener('click', () => {
+        aiMode = false;
+        mainMenu.style.display = 'none';
+        gameSection.style.display = 'block';
+        resetBoard();
+    });
 
-            document.title = title;
-            updateFavicon(favicon);
-        }
+    restartButton.addEventListener('click', resetBoard);
 
-        function applyCustomSite() {
-            const customSite = document.getElementById("custom-site").value;
-            if (customSite) {
-                document.title = customSite;
-                const favicon = `https://www.google.com/s2/favicons?domain=${customSite}`;
-                updateFavicon(favicon);
-            } else {
-                alert("Please enter a valid site URL.");
-            }
-        }
-
-        function updateFavicon(favicon) {
-            let link = document.querySelector("link[rel='icon']");
-            if (!link) {
-                link = document.createElement("link");
-                link.rel = "icon";
-                document.head.appendChild(link);
-            }
-            link.href = favicon;
-        }
-
-        function openSettings() {
-            document.getElementById("settingsModal").style.display = "flex";
-        }
-
-        function closeSettings() {
-            document.getElementById("settingsModal").style.display = "none";
-        }
+    updateTurnIndicator();
+});
