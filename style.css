@@ -1,190 +1,190 @@
-   * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+ {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #111;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #fff;
-        }
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+}
 
-        .calculator {
-            background-color: #222;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            width: 320px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+.calculator {
+    background-color: #222;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    width: 320px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
 
-        .display {
-            background-color: #000;
-            color: #f39c12;
-            padding: 20px;
-            font-size: 3em;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            min-height: 70px;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            letter-spacing: 1px;
-        }
+.display {
+    background-color: #000;
+    color: #f39c12;
+    padding: 20px;
+    font-size: 3em;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    min-height: 70px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    letter-spacing: 1px;
+}
 
-        .button-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-        }
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
 
-        .button {
-            background-color: #444;
-            color: #fff;
-            border: none;
-            font-size: 1.6em;
-            width: 65px;
-            height: 65px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.1s ease;
-        }
+.button {
+    background-color: #444;
+    color: #fff;
+    border: none;
+    font-size: 1.6em;
+    width: 65px;
+    height: 65px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
 
-        .button:hover {
-            background-color: #f39c12;
-            transform: scale(1.1);
-        }
+.button:hover {
+    background-color: #f39c12;
+    transform: scale(1.1);
+}
 
-        .button:active {
-            background-color: #e67e22;
-        }
+.button:active {
+    background-color: #e67e22;
+}
 
-        .button.special {
-            background-color: #f39c12;
-        }
+.button.special {
+    background-color: #f39c12;
+}
 
-        .button.special:hover {
-            background-color: #e67e22;
-        }
+.button.special:hover {
+    background-color: #e67e22;
+}
 
-        .button.clear {
-            background-color: #e74c3c;
-        }
+.button.clear {
+    background-color: #e74c3c;
+}
 
-        .button.clear:hover {
-            background-color: #c0392b;
-        }
+.button.clear:hover {
+    background-color: #c0392b;
+}
 
-        .button.equals {
-            background-color: #2ecc71;
-        }
+.button.equals {
+    background-color: #2ecc71;
+}
 
-        .button.equals:hover {
-            background-color: #27ae60;
-        }
+.button.equals:hover {
+    background-color: #27ae60;
+}
 
-        .settings-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: #444;
-            color: #fff;
-            font-size: 1.8em;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: background-color 0.3s ease;
-        }
+.settings-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #444;
+    color: #fff;
+    font-size: 1.8em;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
 
-        .settings-btn:hover {
-            background-color: #f39c12;
-        }
+.settings-btn:hover {
+    background-color: #f39c12;
+}
 
-        .settings-btn:active {
-            background-color: #e67e22;
-        }
+.settings-btn:active {
+    background-color: #e67e22;
+}
 
-        .settings-btn::before {
-            content: '\2699';
-        }
+.settings-btn::before {
+    content: '\2699';
+}
 
-        /* Settings Modal */
-        .settings-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.3s ease;
-        }
+/* Settings Modal */
+.settings-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
 
-        .settings-modal-content {
-            background-color: #333;
-            padding: 30px;
-            border-radius: 10px;
-            width: 380px;
-            text-align: center;
-            color: #fff;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-        }
+.settings-modal-content {
+    background-color: #333;
+    padding: 30px;
+    border-radius: 10px;
+    width: 380px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
 
-        .settings-modal-content select,
-        .settings-modal-content input,
-        .settings-modal-content button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #444;
-            color: #fff;
-            font-size: 1.1em;
-        }
+.settings-modal-content select,
+.settings-modal-content input,
+.settings-modal-content button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #444;
+    color: #fff;
+    font-size: 1.1em;
+}
 
-        .settings-modal-content button {
-            background-color: #f39c12;
-            cursor: pointer;
-        }
+.settings-modal-content button {
+    background-color: #f39c12;
+    cursor: pointer;
+}
 
-        .settings-modal-content button:hover {
-            background-color: #e67e22;
-        }
+.settings-modal-content button:hover {
+    background-color: #e67e22;
+}
 
-        .settings-modal-content button:active {
-            background-color: #e67e22;
-        }
+.settings-modal-content button:active {
+    background-color: #e67e22;
+}
 
-        h3, h4 {
-            color: #f39c12;
-            font-weight: 500;
-        }
+h3, h4 {
+    color: #f39c12;
+    font-weight: 500;
+}
 
-        label {
-            color: #fff;
-            font-weight: 500;
-        }
+label {
+    color: #fff;
+    font-weight: 500;
+}
 
-        /* Close Button Red */
-        .settings-modal-content button:last-child {
-            background-color: #e74c3c; /* Red close button */
-        }
+/* Close Button Red */
+.settings-modal-content button:last-child {
+    background-color: #e74c3c; /* Red close button */
+}
 
-        .settings-modal-content button:last-child:hover {
-            background-color: #c0392b;
-        }
+.settings-modal-content button:last-child:hover {
+    background-color: #c0392b;
+}
